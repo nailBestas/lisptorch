@@ -1,0 +1,6 @@
+setup.py
+superframe_core.cpp
+superframe.egg-info/PKG-INFO
+superframe.egg-info/SOURCES.txt
+superframe.egg-info/dependency_links.txt
+superframe.egg-info/top_level.txt

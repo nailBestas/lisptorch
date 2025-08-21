@@ -1,4 +1,4 @@
-# SuperFrame
+# SuperFrame v0.1.0
 #### C++ ile Hızlandırılmış Basit Bir Python DataFrame Kütüphanesi
 
 ## Proje Hakkında
@@ -63,13 +63,4 @@ Katkıda Bulunma
 Projeye katkıda bulunmak isterseniz, pull request göndererek veya bir sorun (issue) açarak bize ulaşabilirsiniz.
 
 
-### Son Adımlar
 
-1.  Bu metni `README.md` dosyana kopyalayıp yapıştır ve kaydet.
-2.  Terminali aç ve proje dizininde aşağıdaki komutları çalıştır:
-    ```bash
-    git add README.md
-    git commit -m "README dosyası eklendi."
-    git push origin main
-    ```
-Bu komutlar, yeni `README.md` dosyanı GitHub'a yükleyecek. Bundan sonra, deponun an

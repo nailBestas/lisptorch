@@ -1,0 +1,5 @@
+Metadata-Version: 2.4
+Name: superframe
+Version: 0.1.0
+Requires-Dist: pybind11
+Dynamic: requires-dist

@@ -15,7 +15,7 @@ SuperFrame, büyük veri setlerini işlemek için Python'ın kullanım kolaylı�
 Bu kütüphaneyi kullanmak için öncelikle C++ derleyicinizin (g++) ve Python ortamınızın kurulu olduğundan emin olun. Ardından, projenin ana dizininde aşağıdaki komutu çalıştırın:
 
 bash
-pip install .
+### pip install .
 ## Kullanim
 #python-bash >>
 ```

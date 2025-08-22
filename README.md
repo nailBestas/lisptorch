@@ -1,66 +1,40 @@
 # SuperFrame v0.1.0
-#### C++ ile Hızlandırılmış Basit Bir Python DataFrame Kütüphanesi
 
-## Proje Hakkında
-SuperFrame, Python'ın kullanım kolaylığı ile C++'ın yüksek performansını bir araya getiren hafif bir veri işleme kütüphanesidir. Bu proje, özellikle büyük veri setlerini işlerken performans darboğazlarını aşmak için C++ dilinin gücünden faydalanan bir veri çerçevesi (DataFrame) oluşturmayı amaçlamaktadır.
+C++ ile hızlandırılmış, Python için basit ve güçlü bir veri analizi kütüphanesi.
 
-Bu kütüphanenin temel amacı, Pybind11 aracıyla C++ ve Python arasındaki köprüyü nasıl kuracağımızı ve bu entegrasyonun gerçek bir veri bilimi problemine (eksik verileri işleme gibi) nasıl uygulanacağını göstermektir.
+SuperFrame, büyük veri setlerini işlemek için Python'ın kullanım kolaylığını C++'ın yüksek performansıyla birleştirir. Bu proje, veri okuma, ön işleme ve temel istatistiksel analiz gibi işlemleri hızlandırmayı hedefler.
 
-## Temel Özellikler
-* **Hızlı CSV Okuma:** CSV dosyalarını C++ ile hızlı bir şekilde belleğe okur.
-* **Otomatik Ön İşleme:** Sayısal olmayan veya eksik (NaN) değerleri otomatik olarak tespit eder.
-* **Akıllı Doldurma (Imputation):** Eksik sayısal verileri ilgili sütunun ortalamasıyla doldurur.
-* **Pybind11 ile Entegrasyon:** Python-C++ etkileşimini kolayca sağlar.
+## Özellikler
+
+* **Yüksek Performanslı CSV Okuma**: Verileri diskten C++ hızıyla okur.
+* **Otomatik Ön İşleme**: Eksik (`NaN`) değerleri sütun ortalamalarıyla otomatik olarak doldurur.
+* **Temel İstatistiksel Özet**: `describe()` fonksiyonu ile veri setinize hızlı bir genel bakış sağlar.
 
 ## Kurulum
-SuperFrame'i yerel makinenize kurmak için aşağıdaki adımları izleyin.
-* Gerekli bağımlılıkları yükleyin:
-    ```bash
-    pip install pybind11
-    ```
-* Proje dizininde (setup.py dosyasının olduğu yerde) aşağıdaki komutu çalıştırarak paketi derleyin ve kurun:
-    ```bash
-    pip install .
-    ```
+
+Bu kütüphaneyi kullanmak için öncelikle C++ derleyicinizin (g++) ve Python ortamınızın kurulu olduğundan emin olun. Ardından, projenin ana dizininde aşağıdaki komutu çalıştırın:
+
+```bash
+pip install .
 
 ## Kullanım
-SuperFrame'in temel işlevlerini kullanmak oldukça basittir.
+SuperFrameDataFrame sınıfını içe aktarın ve veri setiniz üzerinde hızlandırılmış işlemleri kolayca gerçekleştirin.
 
-```python
+Python 
+
 import superframe_core
 
-# Kütüphaneyi başlat
-sf = superframe_core.SuperFrameDataFrame()
+# Bir SuperFrameDataFrame nesnesi oluşturun
+df = superframe_core.SuperFrameDataFrame()
 
-# CSV dosyasını oku
-# Okuma sırasında 'yok' gibi metinsel değerler NaN olarak işaretlenir.
-df_data = sf.read_csv("deneme.csv")
-print("Ham Veri:", df_data)
+# CSV dosyasını okuyun
+# (Dosya adını kendi dosyanızla değiştirin)
+df.read_csv("veriler.csv") 
 
-# Veriyi otomatik olarak ön işle
-# Bu adımda NaN değerleri, sütun ortalaması ile doldurulur.
-df_preprocessed = sf.auto_preprocess()
-print("Ön İşlenmiş Veri:", df_preprocessed)
+# Veri setinizin temel istatistiklerini görüntüleyin
+stats = df.describe()
 
-# İşlenmiş veriden bir sütun çek
-yas_sutunu = sf.get_column("yas")
-print("İşlenmiş 'yas' sütunu:", yas_sutunu)
-
-Geliştirme Süreci
-Bu proje, adım adım bir geliştirme süreci izleyerek oluşturulmuştur:
-
-Pybind11 ile ilk modülün oluşturulması.
-
-SuperFrameDataFrame sınıfının tasarlanması.
-
-C++'ta read_csv ve get_column fonksiyonlarının implementasyonu.
-
-auto_preprocess fonksiyonu ile akıllı ön işleme (NaN doldurma) mantığının eklenmesi.
-
-Son kontroller ve testler.
-
+# Sonuçları ekrana yazdırın
+print(stats)
 Katkıda Bulunma
-Projeye katkıda bulunmak isterseniz, pull request göndererek veya bir sorun (issue) açarak bize ulaşabilirsiniz.
-
-
-
+Proje hala geliştirme aşamasındadır ve katkılarınıza açıktır. Her türlü hata raporu, özellik önerisi veya kod katkısı memnuniyetle karşılanır.

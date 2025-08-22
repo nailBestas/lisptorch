@@ -11,6 +11,20 @@
 
 namespace py = pybind11;
 
+// Global get_mean fonksiyonu, sınıfın dışında tanımlanmalı
+double get_mean(const std::vector<double>& data) {
+    if (data.empty()) {
+        return 0.0;
+    }
+
+    double sum = 0.0;
+    for (double val : data) {
+        sum += val;
+    }
+
+    return sum / data.size();
+}
+
 class SuperFrameDataFrame {
 private:
     std::map<std::string, std::vector<double>> data;
@@ -177,7 +191,9 @@ PYBIND11_MODULE(superframe_core, m) {
         .def("auto_preprocess", &SuperFrameDataFrame::auto_preprocess)
         .def("get_column", &SuperFrameDataFrame::get_column)
         .def("describe", &SuperFrameDataFrame::describe);
-        
+
+    m.def("get_mean", &get_mean, "Get the mean of the specified column.");
+    
     m.def("merhaba_superframe", []() { 
         py::print("SuperFrame'in C++ çekirdeği çalışıyor!");
     });

@@ -18,19 +18,11 @@ bash
 pip install .
 ## Kullanim
 #python >>
+
 import superframe_core
-
-#Bir SuperFrameDataFrame nesnesi oluşturun
 df = superframe_core.SuperFrameDataFrame()
-
-#CSV dosyasını okuyun
-#Dosya adını kendi dosyanızla değiştirin)
 df.read_csv("veriler.csv") 
-
-#Veri setinizin temel istatistiklerini görüntüleyin
 stats = df.describe()
-
-#Sonuçları ekrana yazdırın
 print(stats)
 
 ## Katkıda Bulunma

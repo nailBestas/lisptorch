@@ -14,9 +14,10 @@ SuperFrame, büyük veri setlerini işlemek için Python'ın kullanım kolaylı�
 
 Bu kütüphaneyi kullanmak için öncelikle C++ derleyicinizin (g++) ve Python ortamınızın kurulu olduğundan emin olun. Ardından, projenin ana dizininde aşağıdaki komutu çalıştırın:
 
-```bash
+bash
 pip install .
-
+## Kullanim
+# python >>
 import superframe_core
 
 # Bir SuperFrameDataFrame nesnesi oluşturun
@@ -32,4 +33,5 @@ stats = df.describe()
 # Sonuçları ekrana yazdırın
 print(stats)
 
+## Katkıda Bulunma
 Proje hala geliştirme aşamasındadır ve katkılarınıza açıktır. Her türlü hata raporu, özellik önerisi veya kod katkısı memnuniyetle karşılanır.

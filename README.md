@@ -17,11 +17,6 @@ Bu kütüphaneyi kullanmak için öncelikle C++ derleyicinizin (g++) ve Python o
 ```bash
 pip install .
 
-## Kullanım
-SuperFrameDataFrame sınıfını içe aktarın ve veri setiniz üzerinde hızlandırılmış işlemleri kolayca gerçekleştirin.
-
-Python 
-
 import superframe_core
 
 # Bir SuperFrameDataFrame nesnesi oluşturun
@@ -36,5 +31,5 @@ stats = df.describe()
 
 # Sonuçları ekrana yazdırın
 print(stats)
-Katkıda Bulunma
+
 Proje hala geliştirme aşamasındadır ve katkılarınıza açıktır. Her türlü hata raporu, özellik önerisi veya kod katkısı memnuniyetle karşılanır.

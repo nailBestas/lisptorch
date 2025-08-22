@@ -17,20 +17,20 @@ Bu kütüphaneyi kullanmak için öncelikle C++ derleyicinizin (g++) ve Python o
 bash
 pip install .
 ## Kullanim
-# python >>
+#python >>
 import superframe_core
 
-# Bir SuperFrameDataFrame nesnesi oluşturun
+#Bir SuperFrameDataFrame nesnesi oluşturun
 df = superframe_core.SuperFrameDataFrame()
 
-# CSV dosyasını okuyun
-# (Dosya adını kendi dosyanızla değiştirin)
+#CSV dosyasını okuyun
+#Dosya adını kendi dosyanızla değiştirin)
 df.read_csv("veriler.csv") 
 
-# Veri setinizin temel istatistiklerini görüntüleyin
+#Veri setinizin temel istatistiklerini görüntüleyin
 stats = df.describe()
 
-# Sonuçları ekrana yazdırın
+#Sonuçları ekrana yazdırın
 print(stats)
 
 ## Katkıda Bulunma

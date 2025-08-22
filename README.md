@@ -33,6 +33,6 @@ stats = df.describe()
 
 # Sonuçları ekrana yazdırın
 print(stats)
-
+```
 ## Katkıda Bulunma
 Proje hala geliştirme aşamasındadır ve katkılarınıza açıktır. Her türlü hata raporu, özellik önerisi veya kod katkısı memnuniyetle karşılanır.

@@ -17,7 +17,7 @@ Bu kütüphaneyi kullanmak için öncelikle C++ derleyicinizin (g++) ve Python o
 bash
 pip install .
 ## Kullanim
-#python >>
+#python-bash >>
 ```
 import superframe_core
 
@@ -32,7 +32,7 @@ df.read_csv("veriler.csv")
 stats = df.describe()
 
 # Sonuçları ekrana yazdırın
-print(stats)```
+print(stats)
 
 ## Katkıda Bulunma
 Proje hala geliştirme aşamasındadır ve katkılarınıza açıktır. Her türlü hata raporu, özellik önerisi veya kod katkısı memnuniyetle karşılanır.

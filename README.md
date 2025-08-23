@@ -16,7 +16,7 @@ Bu kütüphaneyi kullanmak için öncelikle C++ derleyicinizin (g++) ve Python o
 
 ###### bash
 ###### pip install .
-###### pip install lisptorch==0.1.0
+###### pip install lisptorch
 ## Kullanim
 #python-bash >>
 ```

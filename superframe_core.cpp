@@ -130,6 +130,14 @@ public:
         py::print("HATA: ", column_name, " sutunu bulunamadi.");
         return py::none();
     }
+    py::tuple shape() {
+    size_t rows = 0;
+    if (!columns.empty()) {
+        rows = data.at(columns[0]).size();
+    }
+    size_t cols = columns.size();
+    return py::make_tuple(rows, cols);
+}
 
     std::map<std::string, std::map<std::string, double>> describe() {
         std::map<std::string, std::map<std::string, double>> results;
@@ -190,7 +198,8 @@ PYBIND11_MODULE(superframe_core, m) {
         .def("read_csv", &SuperFrameDataFrame::read_csv)
         .def("auto_preprocess", &SuperFrameDataFrame::auto_preprocess)
         .def("get_column", &SuperFrameDataFrame::get_column)
-        .def("describe", &SuperFrameDataFrame::describe);
+        .def("describe", &SuperFrameDataFrame::describe)
+        .def("shape", &SuperFrameDataFrame::shape);
 
     m.def("get_mean", &get_mean, "Get the mean of the specified column.");
     

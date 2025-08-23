@@ -1,4 +1,4 @@
-# LispTorch  v0.1.0
+# LispTorch  v0.1.1
 
 C++ ile hızlandırılmış, Python için basit ve güçlü bir veri analizi kütüphanesi.
 

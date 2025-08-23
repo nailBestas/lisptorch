@@ -63,11 +63,16 @@ public:
             std::string value_str;
             int col_index = 0;
             while (std::getline(ss, value_str, ',')) {
-                try {
-                    data[columns[col_index]].push_back(std::stod(value_str));
-                } catch (const std::invalid_argument& e) {
-                    py::print("C++: '", value_str, "' double'a çevrilemedi. NaN olarak işaretleniyor.");
+                // Burada NaN değerlerini kontrol ediyoruz
+                if (value_str.empty() || value_str == "nan" || value_str == "NaN") {
                     data[columns[col_index]].push_back(NAN);
+                } else {
+                    try {
+                        data[columns[col_index]].push_back(std::stod(value_str));
+                    } catch (const std::invalid_argument& e) {
+                        py::print("C++: '", value_str, "' double'a çevrilemedi. NaN olarak işaretleniyor.");
+                        data[columns[col_index]].push_back(NAN);
+                    }
                 }
                 col_index++;
             }
@@ -80,6 +85,21 @@ public:
         result["columns"] = py::cast(columns);
         result["data"] = py::cast(data);
         return result;
+    }
+
+    size_t count_nan(const std::string& column_name) {
+        if (data.find(column_name) == data.end()) {
+            py::print("HATA: '", column_name, "' sutunu bulunamadi.");
+            return 0;
+        }
+
+        size_t nan_count = 0;
+        for (double val : data.at(column_name)) {
+            if (std::isnan(val)) {
+                nan_count++;
+            }
+        }
+        return nan_count;
     }
 
     py::object auto_preprocess() {
@@ -130,14 +150,15 @@ public:
         py::print("HATA: ", column_name, " sutunu bulunamadi.");
         return py::none();
     }
+
     py::tuple shape() {
-    size_t rows = 0;
-    if (!columns.empty()) {
-        rows = data.at(columns[0]).size();
+        size_t rows = 0;
+        if (!columns.empty()) {
+            rows = data.at(columns[0]).size();
+        }
+        size_t cols = columns.size();
+        return py::make_tuple(rows, cols);
     }
-    size_t cols = columns.size();
-    return py::make_tuple(rows, cols);
-}
 
     std::map<std::string, std::map<std::string, double>> describe() {
         std::map<std::string, std::map<std::string, double>> results;
@@ -199,7 +220,8 @@ PYBIND11_MODULE(superframe_core, m) {
         .def("auto_preprocess", &SuperFrameDataFrame::auto_preprocess)
         .def("get_column", &SuperFrameDataFrame::get_column)
         .def("describe", &SuperFrameDataFrame::describe)
-        .def("shape", &SuperFrameDataFrame::shape);
+        .def("shape", &SuperFrameDataFrame::shape)
+        .def("count_nan", &SuperFrameDataFrame::count_nan);
 
     m.def("get_mean", &get_mean, "Get the mean of the specified column.");
     

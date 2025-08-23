@@ -4,8 +4,8 @@ import pybind11
 
 ext_modules = [
     Pybind11Extension(
-        "superframe_core",
-        ["superframe_core.cpp"],
+        "lisptorch_core",
+        ["lisptorch_core.cpp"],
         include_dirs=[pybind11.get_include()],
         extra_compile_args=['-std=c++17'],
         language='c++'
@@ -13,7 +13,7 @@ ext_modules = [
 ]
 
 setup(
-    name="superframe",
+    name="lisptorch",
     version="0.1.0",
     ext_modules=ext_modules,
     cmdclass={"build_ext": build_ext},

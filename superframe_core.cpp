@@ -209,6 +209,29 @@ public:
         }
         return results;
     }
+    SuperFrameDataFrame filter_by(const std::string& column_name, double value) {
+    SuperFrameDataFrame new_df;
+    auto it = data.find(column_name);
+    if (it == data.end()) {
+        py::print("HATA: '", column_name, "' sutunu bulunamadi.");
+        return new_df;
+    }
+
+    const auto& column_data = it->second;
+    for (const auto& col : columns) {
+        new_df.data[col] = std::vector<double>();
+        new_df.columns.push_back(col);
+    }
+
+    for (size_t i = 0; i < column_data.size(); ++i) {
+        if (column_data[i] == value) {
+            for (const auto& col : columns) {
+                new_df.data[col].push_back(data.at(col)[i]);
+            }
+        }
+    }
+    return new_df;
+}
 };
 
 PYBIND11_MODULE(superframe_core, m) {
@@ -221,7 +244,8 @@ PYBIND11_MODULE(superframe_core, m) {
         .def("get_column", &SuperFrameDataFrame::get_column)
         .def("describe", &SuperFrameDataFrame::describe)
         .def("shape", &SuperFrameDataFrame::shape)
-        .def("count_nan", &SuperFrameDataFrame::count_nan);
+        .def("count_nan", &SuperFrameDataFrame::count_nan)
+        .def("filter_by", &SuperFrameDataFrame::filter_by);
 
     m.def("get_mean", &get_mean, "Get the mean of the specified column.");
     

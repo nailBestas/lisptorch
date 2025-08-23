@@ -1,14 +1,18 @@
 import superframe_core
+import pandas as pd
 
-# Bir SuperFrameDataFrame nesnesi oluşturun
-df = superframe_core.SuperFrameDataFrame()
+# Veri setini pandas ile oluştur ve CSV'ye yaz
+data = {'Ad': ['Ahmet', 'Ayşe', 'Mehmet', 'Fatma', 'Can'],
+        'Yaş': [25, 30, 22, 28, 35],
+        'Boy': [170, 165, float('nan'), 175, 180]}
+df_pandas = pd.DataFrame(data)
+df_pandas.to_csv("veriler_nan.csv", index=False)
 
-# CSV dosyasını okuyun
-# (Dosya adını kendi dosyanızla değiştirin)
-df.read_csv("veriler.csv")
+# SuperFrame ile CSV dosyasını oku
+df_superframe = superframe_core.SuperFrameDataFrame()
+df_superframe.read_csv("veriler_nan.csv")
 
-# Veri çerçevesinin boyutunu al
-rows, cols = df.shape()
+# NaN değerleri say
+nan_sayisi = df_superframe.count_nan("Boy")
 
-# Sonucu yazdır
-print(f"Veri setinin boyutu: {rows} satır, {cols} sütun")
+print(f"Boy sütunundaki eksik değer sayısı: {nan_sayisi}")

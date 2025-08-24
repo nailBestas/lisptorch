@@ -234,7 +234,7 @@ public:
 }
 };
 
-PYBIND11_MODULE(superframe_core, m) {
+PYBIND11_MODULE(lisptorch_core, m) {
     m.doc() = "SuperFrame'in C++ ile yazılmış performans çekirdeği.";
     
     py::class_<SuperFrameDataFrame>(m, "SuperFrameDataFrame")

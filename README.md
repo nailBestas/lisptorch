@@ -47,6 +47,4 @@ Açıklama: "LispTorch, C++'ın yüksek performansıyla Python'un kolaylığın�
 
 Kurulum: "Öncelikle C++ derleyicinizin kurulu olduğundan emin olun" gibi gereksiz teknik bilgileri kaldırdım. Zira pip artık derlenmiş tekerlek dosyasını (wheel) kuracak ve bu tür bir gereksinim ortadan kalktı. Sadece pip install lisptorch komutunu bıraktım.
 
-Kullanım: superframe_core yerine artık lisptorch_core kullandığını varsayarak kodu düzelttim.
-
 Katkıda Bulunma: Metni daha davetkar hale getirdim ve GitHub deposu için bir link ekledim

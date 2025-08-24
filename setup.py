@@ -15,7 +15,7 @@ ext_modules = [
 
 setup(
     name="lisptorch",
-    version="0.1.9",  # Versiyon numarasını mutlaka artır
+    version="0.1.10",  # Versiyon numarasını mutlaka artır
     ext_modules=ext_modules,
     cmdclass={"build_ext": build_ext},
     install_requires=['pybind11'],
